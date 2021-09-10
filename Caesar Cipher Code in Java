@@ -1,0 +1,38 @@
+package prep;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class CaesarCipher {
+	public static void caesarCipher(String s,int k) {
+		ArrayList<String> str=new ArrayList<>();
+		for(int i=0;i<s.length();i++) {
+			if((int)s.charAt(i)<=90 && (int)s.charAt(i)>=65) {
+				char x=(char)((((int)s.charAt(i)+k-65)%26)+65);
+				str.add(Character.toString(x));
+			}
+			else if((int)s.charAt(i)<=122 && (int)s.charAt(i)>=97) {
+				char x=(char)((((int)s.charAt(i)+k-97)%26)+97);
+				str.add(Character.toString(x));
+			}
+			else if((int)s.charAt(i)<=57 && (int)s.charAt(i)>=48) {
+				char x=(char)((((int)s.charAt(i)+k-48)%10)+48);
+				str.add(Character.toString(x));
+			}
+			else {
+				str.add(Character.toString(s.charAt(i)));
+			}
+		}
+		for(String i:str) {
+			System.out.print(i);
+		}
+	}
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter Text");
+		String s=sc.next();
+		System.out.println("Enter Key");
+		int key=sc.nextInt();
+		caesarCipher(s,key);
+	}
+}
